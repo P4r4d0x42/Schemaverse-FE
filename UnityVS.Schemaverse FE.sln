@@ -1,12 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.Schemaverse FE.CSharp.Editor", "UnityVS.Schemaverse FE.CSharp.Editor.csproj", "{4280D382-B911-8611-1AA3-CBCBB55BF151}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.Schemaverse FE.CSharp", "UnityVS.Schemaverse FE.CSharp.csproj", "{4E491D7C-6B8B-6F15-B9BD-AAD0241F2AF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4280D382-B911-8611-1AA3-CBCBB55BF151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4280D382-B911-8611-1AA3-CBCBB55BF151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4280D382-B911-8611-1AA3-CBCBB55BF151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4280D382-B911-8611-1AA3-CBCBB55BF151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E491D7C-6B8B-6F15-B9BD-AAD0241F2AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E491D7C-6B8B-6F15-B9BD-AAD0241F2AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E491D7C-6B8B-6F15-B9BD-AAD0241F2AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E491D7C-6B8B-6F15-B9BD-AAD0241F2AF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C2A6D90-15AD-4C48-B750-C2B24054EAAD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Npgsql.Provider</RootNamespace>
+    <AssemblyName>Npgsql.Provider</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EnvDTE90, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data.Services, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.9.0, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Design\Check.cs" />
+    <Compile Include="Design\Column.cs" />
+    <Compile Include="Design\ForeignKey.cs" />
+    <Compile Include="Design\Index.cs" />
+    <Compile Include="Design\NpgsqlCommandHandler.cs" />
+    <Compile Include="Design\PrimaryKey.cs" />
+    <Compile Include="Design\SimpleTokenizer.cs" />
+    <Compile Include="Design\SQLiteDataAdapterToolboxItem.cs" />
+    <Compile Include="Design\Table.cs" />
+    <Compile Include="Design\Trigger.cs" />
+    <Compile Include="Design\Unique.cs" />
+    <Compile Include="Design\View.cs" />
+    <Compile Include="Dialogs\ChangePasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ChangePasswordDialog.designer.cs">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ChangeScriptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ChangeScriptDialog.designer.cs">
+      <DependentUpon>ChangeScriptDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ConnectionDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ConnectionDialog.Designer.cs">
+      <DependentUpon>ConnectionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TableNameDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\TableNameDialog.designer.cs">
+      <DependentUpon>TableNameDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\AutoCompleteColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\TableDesignerDoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\TableDesignerDoc.designer.cs">
+      <DependentUpon>TableDesignerDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\ViewDesignerDoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\ViewDesignerDoc.designer.cs">
+      <DependentUpon>ViewDesignerDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NpgsqlConnectionProperties.cs" />
+    <Compile Include="NpgsqlConnectionSupport.cs" />
+    <Compile Include="NpgsqlDataConnectionProperties.cs" />
+    <Compile Include="NpgsqlDataViewBrowseObjectProvider.cs" />
+    <Compile Include="NpgsqlDataViewCommandProvider.cs" />
+    <Compile Include="NpgsqlMappedObjectConverter.cs" />
+    <Compile Include="NpgsqlObjectIdentifierConverter.cs" />
+    <Compile Include="NpgsqlObjectIdentifierResolver.cs" />
+    <Compile Include="NpgsqlObjectSelector.cs" />
+    <Compile Include="NpgsqlObjectTypes.cs" />
+    <Compile Include="NpgsqlParameter.cs" />
+    <Compile Include="NpgsqlSourceInformation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dialogs\ChangePasswordDialog.resx">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ChangeScriptDialog.resx">
+      <DependentUpon>ChangeScriptDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ConnectionDialog.resx">
+      <DependentUpon>ConnectionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\TableNameDialog.resx">
+      <DependentUpon>TableNameDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\TableDesignerDoc.resx">
+      <DependentUpon>TableDesignerDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\ViewDesignerDoc.resx">
+      <DependentUpon>ViewDesignerDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NpgsqlViewSupport.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NpgsqlObjectSupport.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Install.cmd" />
+    <None Include="NpgqslProvider.gen.reg" />
+    <None Include="NpgsqlProvider.reg" />
+    <None Include="PgSql.tt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Install.vbs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Npgsql-2.0.11.91\Npgsql2010.csproj">
+      <Project>{9D13B739-62B1-4190-B386-7A9547304EB3}</Project>
+      <Name>Npgsql2010</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"$(ProjectDir)\Install.cmd" /ranu /regroot SOFTWARE\Microsoft\VisualStudio\10.0Exp /codebase "$(TargetDir)$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
