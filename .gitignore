@@ -11,6 +11,7 @@ Starter Map_Current_Map_Save.txt
 Library/
 temp/
 *sysinfo
+*unityproj
 
 #################
 ## Eclipse
@@ -54,6 +55,10 @@ local.properties
 *.suo
 *.user
 *.sln.docstates
+*.csproj
+*.pidb
+*.sln
+*.userprefs
 
 # Build results
 [Dd]ebug/
