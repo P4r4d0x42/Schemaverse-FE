@@ -3,7 +3,8 @@
 #################
 LevelGenerator_Current_Map_Save.txt
 Starter Map_Current_Map_Save.txt
-
+# For Unity 
+Assets/Closed Source Assets - Do Not Share!!!/*
 
 #################
 ## Unity
@@ -12,6 +13,7 @@ Library/
 temp/
 *sysinfo
 *unityproj
+
 
 #################
 ## Eclipse
