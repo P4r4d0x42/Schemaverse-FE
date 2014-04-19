@@ -46,11 +46,19 @@
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Npgsql">
+      <HintPath>Assets\Support Libraries\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>Assets\Support Libraries\System.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ConnectToDB.cs" />
-    <None Include="Assets\FlipbookGames\ScriptInspector2\Editor\EditorResources\SourceCodePro\LICENSE.txt" />
-    <None Include="Assets\FlipbookGames\ScriptInspector2\readme.txt" />
+    <None Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\EditorResources\SourceCodePro\LICENSE.txt" />
+    <None Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\readme.txt" />
+    <None Include="Assets\Support Libraries\Npgsql.dll" />
+    <None Include="Assets\Support Libraries\System.Data.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>
