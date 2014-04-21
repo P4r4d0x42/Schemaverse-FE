@@ -27,6 +27,7 @@ public class ConnectToDB : MonoBehaviour
     public bool StorePassword;
 
     private bool IsConnected = false;
+    private string ConnectionStatus;
     private string btnStatus = "Connect";
     private  NpgsqlConnection dbcon; // Create connection object
     private  NpgsqlCommand dbcmd; // Create objected used for issueing db comands
@@ -38,7 +39,7 @@ public class ConnectToDB : MonoBehaviour
        
         
         // Make a background box for config menu
-        GUI.Box(new Rect(10, 50, 256, 128), "Connection Settings");
+        GUI.Box(new Rect(10, 48, 256, 160), "Connection Settings");
         
         
         // Connection Settings
@@ -46,9 +47,9 @@ public class ConnectToDB : MonoBehaviour
         GUI.Label(new Rect(35, 75, 256, 30), string.Format("Server Address: {0}", Host));
         GUI.Label(new Rect(35, 95, 256, 30), string.Format("Server Port: {0}", Port));
         GUI.Label(new Rect(35, 115, 256, 30), string.Format("Connecting As: {0}", User));
+        GUI.Label(new Rect(35, 135, 256, 30), string.Format("Status: {0}", User));
 
-
-        if (GUI.Button(new Rect(64, 140, 128, 30), btnStatus))
+        if (GUI.Button(new Rect(64, 168, 128, 30), btnStatus))
         {
             // Using try to wrap the db connection open and close process.
             try
@@ -67,7 +68,12 @@ public class ConnectToDB : MonoBehaviour
 
                     dbcmd = dbcon.CreateCommand(); // Initialize object command interface
                     btnStatus = "Disconnect";
-                    IsConnected = true;
+                    if (true)
+                    {
+                        Debug.Log();
+                        IsConnected = true;
+                        ConnectionStatus = "Connected";
+                    }
                 }
                 else
                 {
