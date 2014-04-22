@@ -1,6 +1,7 @@
 ﻿using System;
 using Npgsql;
 using UnityEngine;
+using System.Data;
 using System.Collections;
 
 
@@ -25,13 +26,40 @@ public class ConnectToDB : MonoBehaviour
         Password;
 
     public bool StorePassword;
-
+    private string connectionString;
     private bool IsConnected = false;
     private string ConnectionStatus;
     private string btnStatus = "Connect";
-    private  NpgsqlConnection dbcon; // Create connection object
+    
+    private  NpgsqlConnection conn; // Create connection object
     private  NpgsqlCommand dbcmd; // Create objected used for issueing db comands
            
+     void Start()
+     {
+         // Setup connection string
+         connectionString = 
+             string.Format("Server={0};Port={1};User Id={2};Password={3};Database={4};",
+                                          Host, Port, User, Password, DBname);
+
+         // Initialize a connection (socket)? 
+         conn = new NpgsqlConnection(connectionString);
+     }
+ 
+
+
+    void Update()
+    {
+        // Update status Might should have this check if the status has changed before make this update....
+        ConnectionStatus = conn.State.ToString();
+        
+        //if (conn.State != ConnectionState.Open)
+        //{
+        //    Debug.Log("Something happened with the connection. This is the current state of conn.State: " + conn.State.ToString());
+        //}
+        
+    }
+
+
  
 
     void OnGUI()
@@ -47,43 +75,33 @@ public class ConnectToDB : MonoBehaviour
         GUI.Label(new Rect(35, 75, 256, 30), string.Format("Server Address: {0}", Host));
         GUI.Label(new Rect(35, 95, 256, 30), string.Format("Server Port: {0}", Port));
         GUI.Label(new Rect(35, 115, 256, 30), string.Format("Connecting As: {0}", User));
-        GUI.Label(new Rect(35, 135, 256, 30), string.Format("Status: {0}", User));
+        GUI.Label(new Rect(35, 135, 256, 30), string.Format("Status: {0}", ConnectionStatus));
 
         if (GUI.Button(new Rect(64, 168, 128, 30), btnStatus))
         {
             // Using try to wrap the db connection open and close process.
             try
             {
-                if (!IsConnected)
+                if (conn.State == ConnectionState.Closed)
                 {
                     Debug.Log("Connecting.....");
 
-                    dbcon =
-                        new NpgsqlConnection(string.Format("Server={0};Port={1};User Id={2};Password={3};Database={4};",
-                                                           Host, Port, User, Password, DBname));
+                    conn.Open();
 
-                    dbcon.Open();
-
-                    Debug.Log("Connection should be open");
-
-                    dbcmd = dbcon.CreateCommand(); // Initialize object command interface
+                    Debug.Log("Success open postgreSQL connection."); 
                     btnStatus = "Disconnect";
-                    if (true)
-                    {
-                        Debug.Log();
-                        IsConnected = true;
-                        ConnectionStatus = "Connected";
-                    }
-                }
-                else
+                
+                    // Initialize object command interface
+                    dbcmd = conn.CreateCommand(); 
+                } 
+                else 
                 {
                     dbcmd.Dispose();
-                    dbcon.Close();                
-                    dbcon = null;
+                    conn.Close();                
+                    //conn = null;
                     Debug.Log("Connection should be closed");
                     dbcmd = null;
                     btnStatus = "Connect";
-                    IsConnected = false;
                 }
 
             }
