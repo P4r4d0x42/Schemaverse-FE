@@ -17,15 +17,16 @@ using System.Collections;
 public class ConnectToDB : MonoBehaviour
 {
 
+    // Was set to public but it wouldn't keep it's settings
+    private string
+        DBname = "schemaverse",
+        Host = "db.schemaverse.com",
+        User = "mrfreeman",
+        Password = "M*EdCXpDm*9mQJ9FJ";
 
-    public string
-        DBname,
-        Host,
-        User,
-        Password;
+    private int Port = 5432; // server port number
 
-    public int Port;
- 
+    
     public bool StorePassword;
     
     
@@ -74,30 +75,32 @@ public class ConnectToDB : MonoBehaviour
 
         if (GUI.Button(new Rect(64, 168, 128, 30), btnStatus)){ ConnectionToDb(); }
         if (GUI.Button(new Rect(64, 208, 128, 30), "Quit Application")) { QuitApplication(); }
+        if (GUI.Button(new Rect(64, 208, 128, 30), "Stats")) { GetData(); }
+    }
 
-        // This should be a Select Statment method
-        dbcmd.CommandText = "SELECT username, balance, fuel_reserve FROM my_player"; // Test connection by running this query
+    private void GetData()
+    {
+// This should be a Select Statment method
+        dbcmd.CommandText = "SELECT username, balance, fuel_reserve FROM my_player";
+            // Test connection by running this query
 
         var reader = dbcmd.ExecuteReader();
 
         while (reader.Read())
         {
-
             string username = reader["username"].ToString();
 
             string balance = reader["balance"].ToString();
 
             string fuel_reserve = reader["fuel_reserve"].ToString();
 
-            Debug.Log(string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}",username,balance,fuel_reserve));
-
+            Debug.Log(string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}", username, balance, fuel_reserve));
         }
 
-         // clean up
+        // clean up
 
-         reader.Close();
-         reader = null;
-
+        reader.Close();
+        reader = null;
     }
 
 
