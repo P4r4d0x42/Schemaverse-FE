@@ -17,7 +17,6 @@ using System.Collections;
 public class ConnectToDB : MonoBehaviour
 {
 
-    private int Port = 5432; // server port number
 
     public string
         DBname,
@@ -25,9 +24,12 @@ public class ConnectToDB : MonoBehaviour
         User,
         Password;
 
+    public int Port;
+ 
     public bool StorePassword;
+    
+    
     private string connectionString;
-    private bool IsConnected = false;
     private string ConnectionStatus;
     private string btnStatus = "Connect";
     
@@ -50,24 +52,17 @@ public class ConnectToDB : MonoBehaviour
     void Update()
     {
         // Update status Might should have this check if the status has changed before make this update....
-        ConnectionStatus = conn.State.ToString();
-        
-        //if (conn.State != ConnectionState.Open)
-        //{
-        //    Debug.Log("Something happened with the connection. This is the current state of conn.State: " + conn.State.ToString());
-        //}
-        
+        if (conn != null) ConnectionStatus = conn.State.ToString();
+
     }
 
-
- 
 
     void OnGUI()
     {
        
         
         // Make a background box for config menu
-        GUI.Box(new Rect(10, 48, 256, 160), "Connection Settings");
+        GUI.Box(new Rect(10, 48, 256, 208), "Connection Settings");
         
         
         // Connection Settings
@@ -75,67 +70,92 @@ public class ConnectToDB : MonoBehaviour
         GUI.Label(new Rect(35, 75, 256, 30), string.Format("Server Address: {0}", Host));
         GUI.Label(new Rect(35, 95, 256, 30), string.Format("Server Port: {0}", Port));
         GUI.Label(new Rect(35, 115, 256, 30), string.Format("Connecting As: {0}", User));
-        GUI.Label(new Rect(35, 135, 256, 30), string.Format("Status: {0}", ConnectionStatus));
+        GUI.Label(new Rect(35, 135, 256, 30), string.Format("Connection Status: {0}", ConnectionStatus));
 
-        if (GUI.Button(new Rect(64, 168, 128, 30), btnStatus))
-        {
-            // Using try to wrap the db connection open and close process.
-            try
-            {
-                if (conn.State == ConnectionState.Closed)
-                {
-                    Debug.Log("Connecting.....");
-
-                    conn.Open();
-
-                    Debug.Log("Success open postgreSQL connection."); 
-                    btnStatus = "Disconnect";
-                
-                    // Initialize object command interface
-                    dbcmd = conn.CreateCommand(); 
-                } 
-                else 
-                {
-                    dbcmd.Dispose();
-                    conn.Close();                
-                    //conn = null;
-                    Debug.Log("Connection should be closed");
-                    dbcmd = null;
-                    btnStatus = "Connect";
-                }
-
-            }
-            catch (Exception msg)
-            {
-                // something went wrong, and you wanna know why
-                Debug.LogError(msg.ToString());
-                throw;
-            }
-        }
-
+        if (GUI.Button(new Rect(64, 168, 128, 30), btnStatus)){ ConnectionToDb(); }
+        if (GUI.Button(new Rect(64, 208, 128, 30), "Quit Application")) { QuitApplication(); }
 
         // This should be a Select Statment method
-        //dbcmd.CommandText = "SELECT username, balance, fuel_reserve FROM my_player"; // Test connection by running this query
+        dbcmd.CommandText = "SELECT username, balance, fuel_reserve FROM my_player"; // Test connection by running this query
 
-        //var reader = dbcmd.ExecuteReader();
+        var reader = dbcmd.ExecuteReader();
 
-        //while (reader.Read())
-        //{
+        while (reader.Read())
+        {
 
-        //    string username = reader["username"].ToString();
+            string username = reader["username"].ToString();
 
-        //    string balance = reader["balance"].ToString();
+            string balance = reader["balance"].ToString();
 
-        //    string fuel_reserve = reader["fuel_reserve"].ToString();
+            string fuel_reserve = reader["fuel_reserve"].ToString();
 
-        //    Debug.Log(string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}",username,balance,fuel_reserve));
+            Debug.Log(string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}",username,balance,fuel_reserve));
 
-        //}
+        }
 
-        // clean up
+         // clean up
 
-        // reader.Close();
-        // reader = null;
+         reader.Close();
+         reader = null;
 
     }
+
+
+    private void ConnectionToDb()
+    {
+// Using try to wrap the db connection open and close process.
+        try
+        {
+            if (conn.State == ConnectionState.Closed)
+            {
+                Debug.Log("Connecting.....");
+
+                conn.Open();
+
+                Debug.Log("Success open postgreSQL connection.");
+                btnStatus = "Disconnect";
+
+                // Initialize object command interface
+                dbcmd = conn.CreateCommand();
+            }
+            else
+            {
+                dbcmd.Dispose();
+                conn.Close();
+                //conn = null;
+                Debug.Log("Connection should be closed");
+                dbcmd = null;
+                btnStatus = "Connect";
+            }
+        }
+        catch (Exception msg)
+        {
+            // something went wrong, and you wanna know why
+            Debug.LogError(msg.ToString());
+            throw;
+        }
+    }
+    
+    
+    private void QuitApplication()
+    {
+        if (dbcmd != null)
+        {
+            dbcmd.Dispose();
+            dbcmd = null; 
+        }
+
+        if (conn != null)
+        {
+            conn.Close();
+            conn = null;
+        }
+        
+        btnStatus = "Connect";
+        
+        Application.Quit();
+        // This won't work in the editor. Only in build
+    }
+
+
 }
