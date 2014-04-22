@@ -63,7 +63,7 @@ public class ConnectToDB : MonoBehaviour
        
         
         // Make a background box for config menu
-        GUI.Box(new Rect(10, 48, 256, 208), "Connection Settings");
+        GUI.Box(new Rect(10, 48, 256, 256), "Connection Settings");
         
         
         // Connection Settings
@@ -74,8 +74,21 @@ public class ConnectToDB : MonoBehaviour
         GUI.Label(new Rect(35, 135, 256, 30), string.Format("Connection Status: {0}", ConnectionStatus));
 
         if (GUI.Button(new Rect(64, 168, 128, 30), btnStatus)){ ConnectionToDb(); }
+        
+        
         if (GUI.Button(new Rect(64, 208, 128, 30), "Quit Application")) { QuitApplication(); }
-        if (GUI.Button(new Rect(64, 208, 128, 30), "Stats")) { GetData(); }
+        
+        
+        // Only Display these buttons if there is an active connection
+        if (conn.State == ConnectionState.Open)
+        {
+            // Make a background box for config menu
+            GUI.Box(new Rect(Screen.width - 266,  48, 256, 512), "Commands");
+            if (GUI.Button(new Rect(Screen.width - 266, 248, 128, 30), "Stats")) { GetData(); }
+        }
+
+
+
     }
 
     private void GetData()
