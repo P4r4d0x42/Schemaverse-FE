@@ -5,7 +5,6 @@ using System.Data;
 using System.Collections;
 
 
-
 // For reference 
 // http://www.codeproject.com/Articles/30989/Using-PostgreSQL-in-your-C-NET-application-An-intr
 // http://forum.unity3d.com/threads/9051-Test-Connect-Script-to-PostgreSQL-Server
@@ -14,163 +13,146 @@ using System.Collections;
 // Information about connections and transactions. Please review it in detail.
 // http://stackoverflow.com/questions/11517342/when-to-open-close-connection-to-database
 
-public class ConnectToDB : MonoBehaviour
+namespace Assets.Scripts
 {
 
-    // Was set to public but it wouldn't keep it's settings
-    private string
-        DBname = "schemaverse",
-        Host = "db.schemaverse.com",
-        User = "mrfreeman",
-        Password = "M*EdCXpDm*9mQJ9FJ";
-
-    private int Port = 5432; // server port number
-
-    
-    public bool StorePassword;
-    
-    
-    private string connectionString;
-    private string ConnectionStatus;
-    private string btnStatus = "Connect";
-    
-    private  NpgsqlConnection conn; // Create connection object
-    private  NpgsqlCommand dbcmd; // Create objected used for issueing db comands
-           
-     void Start()
-     {
-         // Setup connection string
-         connectionString = 
-             string.Format("Server={0};Port={1};User Id={2};Password={3};Database={4};",
-                                          Host, Port, User, Password, DBname);
-
-         // Initialize a connection (socket)? 
-         conn = new NpgsqlConnection(connectionString);
-     }
- 
-
-
-    void Update()
+    public class ConnectToDB
     {
-        // Update status Might should have this check if the status has changed before make this update....
-        if (conn != null) ConnectionStatus = conn.State.ToString();
 
-    }
+        #region Fields
+
+        public bool StorePassword;
 
 
-    void OnGUI()
-    {
-       
-        
-        // Make a background box for config menu
-        GUI.Box(new Rect(10, 48, 256, 256), "Connection Settings");
-        
-        
-        // Connection Settings
-        // Pixels from left side of screen, Pixels from top left of screen, button width, button height
-        GUI.Label(new Rect(35, 75, 256, 30), string.Format("Server Address: {0}", Host));
-        GUI.Label(new Rect(35, 95, 256, 30), string.Format("Server Port: {0}", Port));
-        GUI.Label(new Rect(35, 115, 256, 30), string.Format("Connecting As: {0}", User));
-        GUI.Label(new Rect(35, 135, 256, 30), string.Format("Connection Status: {0}", ConnectionStatus));
+        private NpgsqlConnection conn; // Create connection object
+        private NpgsqlCommand dbcmd; // Create objected used for issueing db comands
 
-        if (GUI.Button(new Rect(64, 168, 128, 30), btnStatus)){ ConnectionToDb(); }
+        #endregion
+
+
+
+        #region Properties
+
+        // Auto Properties
+        public string Host { get; private set; }
+        public string DBname { get; private set; }
+        public string User { get; private set; }
+        public string Password { get; private set; }
+        public string BtnStatus { get; private set; }
+        public string ConnectionString { get; private set; }
         
-        
-        if (GUI.Button(new Rect(64, 208, 128, 30), "Quit Application")) { QuitApplication(); }
-        
-        
-        // Only Display these buttons if there is an active connection
-        if (conn.State == ConnectionState.Open)
+        public int Port { get; private set; }
+
+        #endregion
+
+
+
+
+        public ConnectToDB()
         {
-            // Make a background box for config menu
-            GUI.Box(new Rect(Screen.width - 266,  48, 256, 512), "Commands");
-            if (GUI.Button(new Rect(Screen.width - 266, 248, 128, 30), "Stats")) { GetData(); }
+            Host = "db.schemaverse.com";
+            Port = 5432;
+            DBname = "schemaverse";
+            User = "mrfreeman";
+            Password = "M*EdCXpDm*9mQJ9FJ";
+            BtnStatus = "Connected";
+
+            // Setup connection string
+            ConnectionString =
+                string.Format("Server={0};Port={1};User Id={2};Password={3};Database={4};",
+                              Host, Port, User, Password, DBname);
+            
+            // Initialize a connection (socket)? 
+            conn = new NpgsqlConnection(ConnectionString);
         }
 
 
+        
 
-    }
-
-    private void GetData()
-    {
-// This should be a Select Statment method
-        dbcmd.CommandText = "SELECT username, balance, fuel_reserve FROM my_player";
+        private void GetSelectData()
+        {
+            // This should be a Select Statment method
+            dbcmd.CommandText = "SELECT username, balance, fuel_reserve FROM my_player";
             // Test connection by running this query
 
-        var reader = dbcmd.ExecuteReader();
+            var reader = dbcmd.ExecuteReader();
 
-        while (reader.Read())
-        {
-            string username = reader["username"].ToString();
+            while (reader.Read())
+            {
+                string username = reader["username"].ToString();
 
-            string balance = reader["balance"].ToString();
+                string balance = reader["balance"].ToString();
 
-            string fuel_reserve = reader["fuel_reserve"].ToString();
+                string fuel_reserve = reader["fuel_reserve"].ToString();
 
-            Debug.Log(string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}", username, balance, fuel_reserve));
+                Debug.Log(string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}", username, balance,
+                                        fuel_reserve));
+            }
+
+            // clean up
+
+            reader.Close();
+            reader = null;
         }
 
-        // clean up
 
-        reader.Close();
-        reader = null;
-    }
-
-
-    private void ConnectionToDb()
-    {
-// Using try to wrap the db connection open and close process.
-        try
+        private void ConnectionToDb()
         {
-            if (conn.State == ConnectionState.Closed)
+            // Using try to wrap the db connection open and close process.
+            try
             {
-                Debug.Log("Connecting.....");
+                if (conn.State == ConnectionState.Closed)
+                {
+                    Debug.Log("Connecting.....");
 
-                conn.Open();
+                    conn.Open();
 
-                Debug.Log("Success open postgreSQL connection.");
-                btnStatus = "Disconnect";
+                    Debug.Log("Success open postgreSQL connection.");
+                    BtnStatus = "Disconnect";
 
-                // Initialize object command interface
-                dbcmd = conn.CreateCommand();
+                    // Initialize object command interface
+                    dbcmd = conn.CreateCommand();
+                }
+                else
+                {
+                    dbcmd.Dispose();
+                    conn.Close();
+                    //conn = null;
+                    Debug.Log("Connection should be closed");
+                    dbcmd = null;
+                    BtnStatus = "Connect";
+                }
             }
-            else
+            catch (Exception msg)
+            {
+                // something went wrong, and you wanna know why
+                Debug.LogError(msg.ToString());
+                throw;
+            }
+        }
+
+
+        private void QuitApplication()
+        {
+            if (dbcmd != null)
             {
                 dbcmd.Dispose();
-                conn.Close();
-                //conn = null;
-                Debug.Log("Connection should be closed");
                 dbcmd = null;
-                btnStatus = "Connect";
             }
-        }
-        catch (Exception msg)
-        {
-            // something went wrong, and you wanna know why
-            Debug.LogError(msg.ToString());
-            throw;
-        }
-    }
-    
-    
-    private void QuitApplication()
-    {
-        if (dbcmd != null)
-        {
-            dbcmd.Dispose();
-            dbcmd = null; 
+
+            if (conn != null)
+            {
+                conn.Close();
+                conn = null;
+            }
+
+            BtnStatus = "Connect";
+
+            Application.Quit();
+            // This won't work in the editor. Only in build
         }
 
-        if (conn != null)
-        {
-            conn.Close();
-            conn = null;
-        }
-        
-        btnStatus = "Connect";
-        
-        Application.Quit();
-        // This won't work in the editor. Only in build
+
     }
 
 
