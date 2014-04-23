@@ -2,7 +2,7 @@
 using Npgsql;
 using UnityEngine;
 using System.Data;
-using System.Collections;
+
 
 
 // For reference 
@@ -16,7 +16,7 @@ using System.Collections;
 namespace Assets.Scripts
 {
 
-    public class ConnectToDB
+    public class ConnectToDb
     {
 
         #region Fields
@@ -24,8 +24,8 @@ namespace Assets.Scripts
         public bool StorePassword;
 
 
-        private NpgsqlConnection conn; // Create connection object
-        private NpgsqlCommand dbcmd; // Create objected used for issueing db comands
+        public  NpgsqlConnection conn; // Create connection object
+        private  NpgsqlCommand dbcmd; // Create objected used for issueing db comands
 
         #endregion
 
@@ -40,22 +40,27 @@ namespace Assets.Scripts
         public string Password { get; private set; }
         public string BtnStatus { get; private set; }
         public string ConnectionString { get; private set; }
+
+        public string ConnectionStatus
+        {
+            get { return conn.State.ToString(); }
+        }
+
+        public  int Port { get; private set; }
+
         
-        public int Port { get; private set; }
 
         #endregion
 
 
-
-
-        public ConnectToDB()
+        public ConnectToDb()
         {
             Host = "db.schemaverse.com";
             Port = 5432;
             DBname = "schemaverse";
             User = "mrfreeman";
             Password = "M*EdCXpDm*9mQJ9FJ";
-            BtnStatus = "Connected";
+            BtnStatus = "Connect";
 
             // Setup connection string
             ConnectionString =
@@ -67,9 +72,7 @@ namespace Assets.Scripts
         }
 
 
-        
-
-        private void GetSelectData()
+        public  void GetSelectData()
         {
             // This should be a Select Statment method
             dbcmd.CommandText = "SELECT username, balance, fuel_reserve FROM my_player";
@@ -96,7 +99,7 @@ namespace Assets.Scripts
         }
 
 
-        private void ConnectionToDb()
+        public  void ConnectionToDb()
         {
             // Using try to wrap the db connection open and close process.
             try
