@@ -79,6 +79,7 @@
     <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\ScriptInspector.cs" />
     <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\ShaderInspector.cs" />
     <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\TangoColors.cs" />
+    <Compile Include="Assets\Scripts\GUI Drag-Drop\Editor\MyEditorWindow.cs" />
     <None Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\EditorResources\SourceCodePro\LICENSE.txt" />
     <None Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\readme.txt" />
     <None Include="Assets\Closed Source Assets - Do Not Share!!!\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />
