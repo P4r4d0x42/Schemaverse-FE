@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// This class apears to be handling the draging and droping portion
+/// </summary>
 public class GUIDraggableObject
 {
 	protected Vector2 m_Position;

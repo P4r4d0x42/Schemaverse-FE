@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DataObject : GUIDraggableObject
 // This class just has the capability of being dragged in GUI - it could be any type of generic data class
+// This would be your dragable object
 {
 	private string m_Name;
 	private int m_Value;
