@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.GUI
 {
 
     public class BasicGUI : MonoBehaviour
