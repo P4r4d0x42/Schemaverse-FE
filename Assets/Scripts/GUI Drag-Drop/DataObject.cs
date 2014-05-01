@@ -28,7 +28,9 @@ public class DataObject : GUIDraggableObject
 
 		if (Dragging)
 		{
-			GUILayout.Label ("Wooo...");
+			GUILayout.Label (string.Format("Position X: {0} | Y: {1}",Position.x,Position.y));
+            // TODO: Save these values to a log when the finished draging the menu. It should then load those values when the software starts
+
 		}
 		else if (GUILayout.Button ("Yes!"))
 		{
