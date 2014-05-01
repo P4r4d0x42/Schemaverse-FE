@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class MyMonoBehaviour : MonoBehaviour
 {
 	private List< DataObject > m_Data = new List< DataObject > ();
-	private List< Setting > m_Settings = new List<Setting>();
+
 
 	private Rect dropTargetRect = new Rect (10.0f, 10.0f, 30.0f, 30.0f);
 
@@ -17,13 +17,13 @@ public class MyMonoBehaviour : MonoBehaviour
 
 	void Awake ()
 	{
-		m_Data.Add(new DataObject("Connection Settings", 1, new Vector2(10.0f, 10.0f)));
-		m_Data.Add (new DataObject ("Two", 2, new Vector2 (20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f))));
-		m_Data.Add (new DataObject ("Three", 3, new Vector2 (20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f))));
-		m_Data.Add (new DataObject ("Four", 4, new Vector2 (20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f))));
-		m_Data.Add(new DataObject("Five", 5, new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f))));
+		m_Data.Add(new DataObject("Connection Settings", 1, new Vector2(10f, 10f),new Vector2(128f,128f)));
+        m_Data.Add(new DataObject("Two", 2, new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f)), new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f))));
+        m_Data.Add(new DataObject("Three", 3, new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f)), new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f))));
+        m_Data.Add(new DataObject("Four", 4, new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f)), new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f))));
+        m_Data.Add(new DataObject("Five", 5, new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f)), new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f))));
 
-		m_Settings.Add(new Setting(string.Format("Server Address: {0}", _connectToDb.Host),6,new Vector2 (20.0f,20.0f)));
+		
 	}
 
 	public void OnGUI ()

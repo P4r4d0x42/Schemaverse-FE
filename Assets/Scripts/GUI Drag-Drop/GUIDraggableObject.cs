@@ -5,66 +5,43 @@ using System.Collections;
 /// </summary>
 public class GUIDraggableObject
 {
-	protected Vector2 m_Position;
-    protected Vector2 m_Size;
-	private Vector2 m_DragStart;
-	private bool m_Dragging;
+    private Vector2 m_DragStart;
 
-    public GUIDraggableObject (Vector2 position)
+    // Constructor 
+    public GUIDraggableObject (Vector2 position, Vector2 size)
 	{
-		m_Position = position;
+		Position = position;
+        Size = size;
 	}
 
-	public bool Dragging
-	{
-		get
-		{
-			return m_Dragging;
-		}
-	}
 
-	public Vector2 Position
-	{
-		get
-		{
-			return m_Position;
-		}
+    #region Autoproperties 
 
-		set
-		{
-			m_Position = value;
-		}
-	}
+    public bool Dragging { get; private set; }
 
-    public Vector2 Size
-    {
-        get
-        {
-            return m_Size;
-        }
+    public Vector2 Position { get; set; }
 
-        set
-        {
-            m_Size = value;
-        }
-    }
+    public Vector2 Size { get; set; }
 
-	public void Drag (Rect draggingRect)
+    #endregion
+
+
+    public void Drag (Rect draggingRect)
 	{
 		if (Event.current.type == EventType.MouseUp)
 		{
-			m_Dragging = false;
+			Dragging = false;
 		}
 		else if (Event.current.type == EventType.MouseDown && draggingRect.Contains (Event.current.mousePosition))
 		{
-			m_Dragging = true;
-			m_DragStart = Event.current.mousePosition - m_Position;
+			Dragging = true;
+			m_DragStart = Event.current.mousePosition - Position;
 			Event.current.Use();
 		}
 
-		if (m_Dragging)
+		if (Dragging)
 		{
-			m_Position = Event.current.mousePosition - m_DragStart;
+			Position = Event.current.mousePosition - m_DragStart;
 		}
 	}
 }

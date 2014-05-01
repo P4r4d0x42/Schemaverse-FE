@@ -11,11 +11,11 @@ public class MyEditorWindow : EditorWindow
 
 	public MyEditorWindow ()
 	{
-		m_Data.Add (new DataObject ("One", 1, new Vector2 (20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f))));
-		m_Data.Add (new DataObject ("Two", 2, new Vector2 (20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f))));
-		m_Data.Add (new DataObject ("Three", 3, new Vector2 (20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f))));
-		m_Data.Add (new DataObject ("Four", 4, new Vector2 (20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f))));
-		m_Data.Add (new DataObject ("Five", 5, new Vector2 (20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f))));
+		m_Data.Add (new DataObject ("One", 1, new Vector2 (20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f)),new Vector2(20.0f * Random.Range (1.0f, 10.0f), 20.0f * Random.Range (1.0f, 10.0f))));
+        m_Data.Add(new DataObject("Two", 2, new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f)), new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f))));
+        m_Data.Add(new DataObject("Three", 3, new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f)), new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f))));
+        m_Data.Add(new DataObject("Four", 4, new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f)), new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f))));
+        m_Data.Add(new DataObject("Five", 5, new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f)), new Vector2(20.0f * Random.Range(1.0f, 10.0f), 20.0f * Random.Range(1.0f, 10.0f))));
 	}
 
 	[MenuItem ("Window/MyEditorWindow")]

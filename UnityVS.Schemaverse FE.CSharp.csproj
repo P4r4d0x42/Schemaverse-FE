@@ -54,11 +54,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BasicGUI.cs" />
     <Compile Include="Assets\Scripts\ConnectToDB.cs" />
     <Compile Include="Assets\Scripts\GUI Drag-Drop\DataObject.cs" />
     <Compile Include="Assets\Scripts\GUI Drag-Drop\GUIDraggableObject.cs" />
     <Compile Include="Assets\Scripts\GUI Drag-Drop\MyMonoBehaviour.cs" />
+    <Compile Include="Assets\Scripts\GUI\BasicGUI.cs" />
     <Compile Include="Assets\Scripts\Utilities.cs" />
     <None Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\EditorResources\SourceCodePro\LICENSE.txt" />
     <None Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\readme.txt" />
