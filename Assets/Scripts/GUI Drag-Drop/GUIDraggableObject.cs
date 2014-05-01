@@ -6,10 +6,11 @@ using System.Collections;
 public class GUIDraggableObject
 {
 	protected Vector2 m_Position;
+    protected Vector2 m_Size;
 	private Vector2 m_DragStart;
 	private bool m_Dragging;
 
-	public GUIDraggableObject (Vector2 position)
+    public GUIDraggableObject (Vector2 position)
 	{
 		m_Position = position;
 	}
@@ -34,6 +35,19 @@ public class GUIDraggableObject
 			m_Position = value;
 		}
 	}
+
+    public Vector2 Size
+    {
+        get
+        {
+            return m_Size;
+        }
+
+        set
+        {
+            m_Size = value;
+        }
+    }
 
 	public void Drag (Rect draggingRect)
 	{

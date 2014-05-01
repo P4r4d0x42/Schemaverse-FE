@@ -7,16 +7,18 @@ public class DataObject : GUIDraggableObject
 {
 	private string m_Name;
 	private int m_Value;
+    
 
-	public DataObject (string name, int value, Vector2 position) : base (position)
+    public DataObject (string name, int value, Vector2 position, Vector2 size) : base (position)
 	{
 		m_Name = name;
 		m_Value = value;
+	    m_Size = size;
 	}
 
 	public void OnGUI ()
 	{
-		Rect drawRect = new Rect (m_Position.x, m_Position.y, 100.0f, 100.0f), dragRect;
+		Rect drawRect = new Rect (m_Position.x, m_Position.y, 256.0f, 256.0f), dragRect;
 
 		GUILayout.BeginArea (drawRect, GUI.skin.GetStyle ("Box"));
 		GUILayout.Label (m_Name, GUI.skin.GetStyle ("Box"), GUILayout.ExpandWidth (true));

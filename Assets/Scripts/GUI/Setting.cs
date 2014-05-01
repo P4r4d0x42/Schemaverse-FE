@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-//namespace Assets.Scripts.GUI
-//{
-    public class StatsMenu : GUIDraggableObject
+namespace Assets.Scripts.GUI
+{
+    public class Setting : GUIDraggableObject
     {
         private string m_Name;
         private int m_Value;
 
-        public StatsMenu(string name, int value, Vector2 position) : base(position)
+        public Setting(string name, int value, Vector2 position)
+            : base(position)
         {
             m_Name = name;
             m_Value = value;
@@ -18,8 +18,11 @@ using System.Collections;
         {
             Rect drawRect = new Rect(m_Position.x, m_Position.y, 100.0f, 100.0f), dragRect;
 
-            GUILayout.BeginArea(drawRect, GUI.skin.GetStyle("Box"));
-            GUILayout.Label(m_Name, GUI.skin.GetStyle("Box"), GUILayout.ExpandWidth(true));
+            GUILayout.BeginArea(drawRect, UnityEngine.GUI.skin.GetStyle("Box"));
+            GUILayout.Label(m_Name, UnityEngine.GUI.skin.GetStyle("Box"), GUILayout.ExpandWidth(true));
+            
+
+
 
             dragRect = GUILayoutUtility.GetLastRect();
             dragRect = new Rect(dragRect.x + m_Position.x, dragRect.y + m_Position.y, dragRect.width, dragRect.height);
@@ -43,6 +46,5 @@ using System.Collections;
 
 
     }
-
-//}
+}
 
