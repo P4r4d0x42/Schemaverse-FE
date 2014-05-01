@@ -20,6 +20,10 @@ public class BasicGUI : MonoBehaviour
 		m_Data.Add(new DataObject("Connection Settings", 1, new Vector2(10f, 10f),new Vector2(256f,128f)));
        // TODO: Need to sort out how I'm going to call different menus. This may not be the best choice
        // TODO: I wounder if I could use XML to pass in the need data or perhaps pass in a class/object with the correct GUI elements... 
+       // If i were to use the value passed into the new DataObject to identify what type of GUI Element was needed
+       // I could then use the DataObject to check that value via a switch statment and create new objects based on what it was
+
+
 		
 	}
 
