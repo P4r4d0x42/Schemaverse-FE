@@ -9,14 +9,32 @@ public class DataObject : GUIDraggableObject
 	private string m_Name;
 	private int m_Value;
 
-	ConnectToDb _connectToDb = new ConnectToDb(); // TODO: Remove this. This is here for test purposes here. 
+	// Holds cass to call
+	private ConnectionSettings _connectionSettings;
 
+
+	//ConnectToDb _connectToDb = new ConnectToDb(); // TODO: Remove this. This is here for test purposes here. 
+
+	// This is here to keep current compatablity with the MyEditor version of the calling class
 	public DataObject(string name, int value, Vector2 position, Vector2 size)
 		: base(position, size)
 	{
 		m_Name = name;
 		m_Value = value;
 	}
+
+	// Override constructor for use with the correct class
+	public DataObject(string name, int value, ConnectionSettings connectionSettings, Vector2 position, Vector2 size)
+		: base(position, size)
+	{
+		m_Name = name;
+		m_Value = value;
+
+		_connectionSettings = connectionSettings;
+	}
+
+  
+
 
 	public void OnGUI ()
 	{
@@ -28,24 +46,8 @@ public class DataObject : GUIDraggableObject
 		dragRect = GUILayoutUtility.GetLastRect ();
 		dragRect = new Rect (dragRect.x + Position.x, dragRect.y + Position.y, dragRect.width, dragRect.height);
 
-		#region Special Code // This needs to go into it's own class or some such. Also draging won't work if the above two lines are not were they are.
-
-		GUILayout.Label(string.Format("server address: {0}", _connectToDb.Host), GUI.skin.GetStyle("Box"),
-						GUILayout.ExpandWidth(true));
-		GUILayout.Label(string.Format("server port: {0}", _connectToDb.Port), GUI.skin.GetStyle("Box"),
-						GUILayout.ExpandWidth(true));
-		GUILayout.Label(string.Format("connecting as: {0}", _connectToDb.User), GUI.skin.GetStyle("Box"),
-						GUILayout.ExpandWidth(true));
-		GUILayout.Label(string.Format("Connection Status: {0}", _connectToDb.ConnectionStatus), GUI.skin.GetStyle("Box"),
-						GUILayout.ExpandWidth(true));
-
-		if (GUILayout.Button(_connectToDb.BtnStatus))
-		{
-			_connectToDb.ConnectionToDb();
-		}
-
-		#endregion
-
+		// TODO: Call the fed in class here
+		_connectionSettings.MenuElement();
 
 
 		if (Dragging)

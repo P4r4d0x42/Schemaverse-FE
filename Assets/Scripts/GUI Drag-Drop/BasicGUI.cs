@@ -13,14 +13,13 @@ public class BasicGUI : MonoBehaviour
 	// Creates an instance of the ConnectToDb class for use in this class. This works because the ConnectToDb
 	// does not inherit from the MonoBehavior class. Unity no liky that shit. 
 	ConnectToDb _connectToDb = new ConnectToDb();
+	//ConnectionSettings _connectionSettings = new ConnectionSettings();
 
 	void Awake ()
 	{
-		m_Data.Add(new DataObject("Connection Settings", 1, new Vector2(10f, 10f),new Vector2(256f,166f)));
-	   // TODO: Need to sort out how I'm going to call different menus. This may not be the best choice
-	   // TODO: I wounder if I could use XML to pass in the need data or perhaps pass in a class/object with the correct GUI elements... 
-	   // If i were to use the value passed into the new DataObject to identify what type of GUI Element was needed
-	   // I could then use the DataObject to check that value via a switch statment and create new objects based on what it was
+		// TODO: Pass in the ConnectionSettings class to the DataObject in a constructor override
+		m_Data.Add(new DataObject("Connection Settings", 1, new ConnectionSettings(), new Vector2(10f, 10f), new Vector2(256f, 166f)));
+	   
 	
 	}
 
@@ -42,7 +41,7 @@ public class BasicGUI : MonoBehaviour
 			{
 				GUI.color = dropTargetRect.Contains (Event.current.mousePosition) ? Color.red : color;
 			}
-
+				
 			data.OnGUI (); // Call the OnGUI function in each DataObject in m_Data
 
 			GUI.color = color;
