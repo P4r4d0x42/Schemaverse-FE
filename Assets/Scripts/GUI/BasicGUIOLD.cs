@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using UnityEngine;
 
-namespace Assets.Scripts.GUI
+namespace Assets.Scripts
 {
 
     public class BasicGUIOLD : MonoBehaviour
@@ -25,15 +25,15 @@ namespace Assets.Scripts.GUI
 
             //// Connection Settings
             //// Pixels from left side of screen, Pixels from top left of screen, button width, button height
-            //GUI.Label(new Rect(35, 75, 256, 30), string.Format("Server Address: {0}", _connectToDb.Host));
-            //GUI.Label(new Rect(35, 95, 256, 30), string.Format("Server Port: {0}", _connectToDb.Port));
-            //GUI.Label(new Rect(35, 115, 256, 30), string.Format("Connecting As: {0}", _connectToDb.User));
-            //GUI.Label(new Rect(35, 135, 256, 30), string.Format("Connection Status: {0}", _connectToDb.ConnectionStatus));
+            GUI.Label(new Rect(35, 75, 256, 30), string.Format("Server Address: {0}", _connectToDb.Host));
+            GUI.Label(new Rect(35, 95, 256, 30), string.Format("Server Port: {0}", _connectToDb.Port));
+            GUI.Label(new Rect(35, 115, 256, 30), string.Format("Connecting As: {0}", _connectToDb.User));
+            GUI.Label(new Rect(35, 135, 256, 30), string.Format("Connection Status: {0}", _connectToDb.ConnectionStatus));
 
-            //if (GUI.Button(new Rect(64, 168, 128, 30), _connectToDb.BtnStatus))
-            //{
-            //    _connectToDb.ConnectionToDb();
-            //}
+            if (GUI.Button(new Rect(64, 168, 128, 30), _connectToDb.BtnStatus))
+            {
+                _connectToDb.ConnectionToDb();
+            }
 
             //// Not working quite right ATM
             ////if (GUI.Button(new Rect(64, 208, 128, 30), "Quit Application")) { QuitApplication(); }
