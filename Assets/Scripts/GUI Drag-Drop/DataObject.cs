@@ -13,8 +13,6 @@ public class DataObject : GUIDraggableObject
 	private ConnectionSettings _connectionSettings;
 
 
-	//ConnectToDb _connectToDb = new ConnectToDb(); // TODO: Remove this. This is here for test purposes here. 
-
 	// This is here to keep current compatablity with the MyEditor version of the calling class
 	public DataObject(string name, int value, Vector2 position, Vector2 size)
 		: base(position, size)
@@ -46,11 +44,13 @@ public class DataObject : GUIDraggableObject
 		dragRect = GUILayoutUtility.GetLastRect ();
 		dragRect = new Rect (dragRect.x + Position.x, dragRect.y + Position.y, dragRect.width, dragRect.height);
 
-		// TODO: Call the fed in class here
-		_connectionSettings.MenuElement();
+        #region Put custom code here
+        //_connectionSettings.MenuElement();
 
 
-		if (Dragging)
+        #endregion
+
+        if (Dragging)
 		{
 			GUILayout.Label (string.Format("Position X: {0} | Y: {1}",Position.x,Position.y));
 			// TODO: Save these values to a log when the finished draging the menu. It should then load those values when the software starts

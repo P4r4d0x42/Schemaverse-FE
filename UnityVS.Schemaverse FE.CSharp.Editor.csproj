@@ -69,19 +69,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\AboutScriptInspector.cs" />
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\FGCodeWindow.cs" />
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\FGConsole.cs" />
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\FGTextBuffer.cs" />
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\FGTextBufferManager.cs" />
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\FGTextEditor.cs" />
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\FGTextInspector.cs" />
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\ScriptInspector.cs" />
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\ShaderInspector.cs" />
-    <Compile Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\Scripts\TangoColors.cs" />
     <Compile Include="Assets\Scripts\GUI Drag-Drop\Editor\MyEditorWindow.cs" />
-    <None Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\Editor\EditorResources\SourceCodePro\LICENSE.txt" />
-    <None Include="Assets\Closed Source Assets - Do Not Share!!!\FlipbookGames\ScriptInspector2\readme.txt" />
     <None Include="Assets\Closed Source Assets - Do Not Share!!!\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />
     <None Include="Assets\Closed Source Assets - Do Not Share!!!\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll" />
     <None Include="Assets\Closed Source Assets - Do Not Share!!!\UnityVS\Editor\UnityVS.VersionSpecific.dll" />

@@ -7,7 +7,10 @@ public class BasicGUI : MonoBehaviour
 {
 	private List< DataObject > m_Data = new List< DataObject > ();
 
-
+    // Changed this from DataObject to GUIDraggableObject parent to keep a list of different child objects
+    // I wont be able to access the properties of anything in this list with out major effort
+    // It would be better to create an interface if I need to access properties and make changes. 
+    // http://stackoverflow.com/questions/11354620/creating-a-generic-list-of-objects-in-c-sharp
 	private Rect dropTargetRect = new Rect (Screen.width-50.0f, Screen.height-50.0f, 40.0f, 40.0f);
 
 	// Creates an instance of the ConnectToDb class for use in this class. This works because the ConnectToDb
@@ -18,7 +21,7 @@ public class BasicGUI : MonoBehaviour
 	void Awake ()
 	{
 		// TODO: Pass in the ConnectionSettings class to the DataObject in a constructor override
-		m_Data.Add(new DataObject("Connection Settings", 1, new ConnectionSettings(), new Vector2(10f, 10f), new Vector2(256f, 166f)));
+		m_Data.Add(new DataObject("Connection Settings", 1, ERRORERROR, new Vector2(10f, 10f), new Vector2(256f, 166f)));
 	   
 	
 	}
