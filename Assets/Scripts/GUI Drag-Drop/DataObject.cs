@@ -44,13 +44,13 @@ public class DataObject : GUIDraggableObject
 		dragRect = GUILayoutUtility.GetLastRect ();
 		dragRect = new Rect (dragRect.x + Position.x, dragRect.y + Position.y, dragRect.width, dragRect.height);
 
-        #region Put custom code here
-        //_connectionSettings.MenuElement();
+		#region Put custom code here
+		//_connectionSettings.MenuElement();
 
 
-        #endregion
+		#endregion
 
-        if (Dragging)
+		if (Dragging)
 		{
 			GUILayout.Label (string.Format("Position X: {0} | Y: {1}",Position.x,Position.y));
 			// TODO: Save these values to a log when the finished draging the menu. It should then load those values when the software starts

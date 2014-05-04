@@ -5,28 +5,28 @@ using System.Collections;
 /// </summary>
 public class GUIDraggableObject
 {
-    private Vector2 m_DragStart;
+	private Vector2 m_DragStart;
 
-    // Constructor 
-    public GUIDraggableObject (Vector2 position, Vector2 size)
+	// Constructor 
+	public GUIDraggableObject (Vector2 position, Vector2 size)
 	{
 		Position = position;
-        Size = size;
+		Size = size;
 	}
 
 
-    #region Autoproperties 
+	#region Autoproperties 
 
-    public bool Dragging { get; private set; }
+	public bool Dragging { get; private set; }
 
-    public Vector2 Position { get; set; }
+	public Vector2 Position { get; set; }
 
-    public Vector2 Size { get; set; }
+	public Vector2 Size { get; set; }
 
-    #endregion
+	#endregion
 
 
-    public void Drag (Rect draggingRect)
+	public void Drag (Rect draggingRect)
 	{
 		if (Event.current.type == EventType.MouseUp)
 		{
