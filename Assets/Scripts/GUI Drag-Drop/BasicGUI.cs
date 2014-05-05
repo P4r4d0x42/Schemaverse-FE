@@ -23,10 +23,15 @@ public class BasicGUI : MonoBehaviour
 
 
 	void Awake ()
-	{   
+	{
+	    int sw = Screen.width;
+	    int sh = Screen.height;
+
+
         // Initialize all the menu objects
 		m_Data.Add(new ConnectionSettings("Connection Settings", 1, _connectToDb, new Vector2(10f, 10f), new Vector2(256f, 166f)));
-	   
+        m_Data.Add(new BasicCommands("Basic Commands", 2, _connectToDb, new Vector2(sw - 266f, 10f), new Vector2(256f, 166f)));
+        m_Data.Add(new TerminalOutput("Terminal Output", 3, _connectToDb, new Vector2(sw /2 - 256, sh - 176f), new Vector2(512f, 166f)));
 	
 	}
 
@@ -35,6 +40,7 @@ public class BasicGUI : MonoBehaviour
 		// DataObject toFront, dropDead;
 	    GUIDraggableObject toFront, dropDead;
 		Color color;
+        
 
 		GUI.Box(dropTargetRect, "X");
 

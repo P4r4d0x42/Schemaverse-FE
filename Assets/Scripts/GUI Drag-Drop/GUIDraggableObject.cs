@@ -51,5 +51,6 @@ public class GUIDraggableObject
     public virtual void DrawMenuObject()
     {
         Debug.Log("OnGUI is being called from the GUIDraggableObjects Class");
+        Debug.Log("This should be overriden in the child class");
     }
 }
