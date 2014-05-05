@@ -61,11 +61,11 @@ public class ConnectionSettings : GUIDraggableObject
          
        
 
-        GUILayout.Label(string.Format("server address: {0}", _connectToDb.Host), GUI.skin.GetStyle("Box"),
+        GUILayout.Label(string.Format("Server Address: {0}", _connectToDb.Host), GUI.skin.GetStyle("Box"),
                         GUILayout.ExpandWidth(true));
-        GUILayout.Label(string.Format("server port: {0}", _connectToDb.Port), GUI.skin.GetStyle("Box"),
+        GUILayout.Label(string.Format("Server Port: {0}", _connectToDb.Port), GUI.skin.GetStyle("Box"),
                         GUILayout.ExpandWidth(true));
-        GUILayout.Label(string.Format("connecting as: {0}", _connectToDb.User), GUI.skin.GetStyle("Box"),
+        GUILayout.Label(string.Format("Connecting as: {0}", _connectToDb.User), GUI.skin.GetStyle("Box"),
                         GUILayout.ExpandWidth(true));
         GUILayout.Label(string.Format("Connection Status: {0}", _connectToDb.ConnectionStatus),
                         GUI.skin.GetStyle("Box"),

@@ -7,10 +7,14 @@ using UnityEngine;
 /// </summary>
 public class TerminalOutput : GUIDraggableObject
 {
+    public Vector2 scrollPosition;
+    public string longString = "This is a long-ish String\n";
+    
     private string m_Name;
     private int m_Value; // May have this for tracking menu numbers or some such
 
-    // Holds cass to call
+    
+    // Holds reference to class
     private ConnectToDb _connectToDb;
 
 
@@ -64,7 +68,17 @@ public class TerminalOutput : GUIDraggableObject
     /// </summary>
     public void MenuElement()
     {
-        //Debug.Log("This needs to be setup to read a log or output from commands");
+        // This is for scrolling
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(Size.x-10), GUILayout.Height(80));
+        GUILayout.Label(longString);
+        GUILayout.EndScrollView();
+        
+        if (GUILayout.Button("Clear"))
+            longString = "";
+
+        if (GUILayout.Button("Add More Text"))
+            longString += "Here is another line\n";
+
     }
 }
 

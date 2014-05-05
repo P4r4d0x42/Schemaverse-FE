@@ -72,9 +72,9 @@ public class BasicCommands : GUIDraggableObject
         // if (_connectToDb.conn.State != ConnectionState.Open) return;
         // May want to set this up with GUI.enable 
 
-
+        // Right Side Menu
         GUI.backgroundColor = Color.yellow; // Setting this for safe buttons
-
+        GUILayout.BeginArea(new Rect(5, 40, Size.x / 2 -5, Size.y-10));
 
         // Make a background box for config menu
         //GUI.Button(new Rect(10, 10, 128, 10), "Stats"); // This works with in the area but you got to line stuff up
@@ -83,6 +83,7 @@ public class BasicCommands : GUIDraggableObject
             if (_connectToDb != null) _connectToDb.GetSelectData();
         }
 
+        GUILayout.EndArea();
         
 
     }
