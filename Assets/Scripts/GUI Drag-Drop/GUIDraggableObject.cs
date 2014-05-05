@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 /// <summary>
 /// This class apears to be handling the draging and droping portion
+/// Polymorphism, Up-casting and Down-casting
+/// http://www.c-sharpcorner.com/UploadFile/pcurnow/polymorphcasting06222007131659PM/polymorphcasting.aspx
 /// </summary>
 public class GUIDraggableObject
 {
@@ -44,4 +46,10 @@ public class GUIDraggableObject
 			Position = Event.current.mousePosition - m_DragStart;
 		}
 	}
+
+
+    public virtual void DrawMenuObject()
+    {
+        Debug.Log("OnGUI is being called from the GUIDraggableObjects Class");
+    }
 }
