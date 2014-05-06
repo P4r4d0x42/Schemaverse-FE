@@ -5,29 +5,17 @@ using UnityEngine;
 /// <summary>
 /// Dragable Menu
 /// </summary>
-public class TerminalOutput : GUIDraggableObject
+public class TerminalInput : GUIDraggableObject
 {
-    private Vector2 scrollPosition;
-    private static string _terminal = "Terminal Is Currently Read Only\n";
-    
     private string m_Name;
     private int m_Value; // May have this for tracking menu numbers or some such
 
-    
-    // Holds reference to class
+    // Holds cass to call
     private ConnectToDb _connectToDb;
-
-    public static String Terminal
-    {
-        get { return _terminal; }
-        set { _terminal = value; }
-    }
-
 
 
     // Override constructor for use with the correct class
-    public TerminalOutput(string name, int value, ConnectToDb connectToDb, Vector2 position, Vector2 size)
-        : base(position, size)
+    public TerminalInput(string name, int value, ConnectToDb connectToDb, Vector2 position, Vector2 size) : base(position, size)
     {
         m_Name = name;
         m_Value = value;
@@ -59,7 +47,7 @@ public class TerminalOutput : GUIDraggableObject
             // TODO: Save these values to a log when the finished draging the menu. It should then load those values when the software starts
 
         }
-        
+
 
         // Custom code for each class goes into the below method
         MenuElement();
@@ -75,14 +63,7 @@ public class TerminalOutput : GUIDraggableObject
     /// </summary>
     public void MenuElement()
     {
-        // This is for scrolling
-        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(Size.x-10), GUILayout.Height(105));
-        GUILayout.Label(_terminal);
-        GUILayout.EndScrollView();
-        
-        if (GUILayout.Button("Clear"))
-            _terminal = "";
-
+        //throw new NotImplementedException("Class Not customized yet!");
     }
 }
 

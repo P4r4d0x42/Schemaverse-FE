@@ -25,8 +25,9 @@ namespace Assets.Scripts
 
 
         public  NpgsqlConnection conn; // Create connection object
+        
         private  NpgsqlCommand dbcmd; // Create objected used for issueing db comands
-
+        
         #endregion
 
 
@@ -48,7 +49,14 @@ namespace Assets.Scripts
 
         public  int Port { get; private set; }
 
-        
+        /// <summary>
+        /// Create a link to the static property in TerminalOutput. This will sort of work like a terminal now.  
+        /// </summary>
+        internal string Terminal
+        {
+            get { return TerminalOutput.Terminal; }
+            set { TerminalOutput.Terminal = string.Format("{0}, \n{1}", value, Terminal); } // The idea being _terminal = String.Format("Here is another line\n{0}", _terminal);
+        }
 
         #endregion
 
@@ -88,8 +96,7 @@ namespace Assets.Scripts
 
                 string fuel_reserve = reader["fuel_reserve"].ToString();
 
-                Debug.Log(string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}", username, balance,
-                                        fuel_reserve));
+                Terminal = string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}", username, balance, fuel_reserve);
             }
 
             // clean up
@@ -106,11 +113,11 @@ namespace Assets.Scripts
             {
                 if (conn.State == ConnectionState.Closed)
                 {
-                    Debug.Log("Connecting.....");
+                    Terminal = "Connecting.....";
 
                     conn.Open();
 
-                    Debug.Log("Success open postgreSQL connection.");
+                    Terminal = "Success open postgreSQL connection.";
                     BtnStatus = "Disconnect";
 
                     // Initialize object command interface
@@ -121,7 +128,7 @@ namespace Assets.Scripts
                     dbcmd.Dispose();
                     conn.Close();
                     //conn = null;
-                    Debug.Log("Connection should be closed");
+                    Terminal = "Connection should be closed";
                     dbcmd = null;
                     BtnStatus = "Connect";
                 }

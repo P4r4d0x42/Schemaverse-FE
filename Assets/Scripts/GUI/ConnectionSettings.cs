@@ -76,7 +76,7 @@ public class ConnectionSettings : GUIDraggableObject
 
         if (GUILayout.Button(_connectToDb.BtnStatus))
         {
-            _connectToDb.ConnectionToDb();// TODO: May want this to be static class at some point?            
+            _connectToDb.ConnectionToDb();// TODO: May want this to be static class at some point?
         }
         
     }
