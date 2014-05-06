@@ -28,7 +28,7 @@ public class TerminalWindow : GUIDraggableObject
     public static String Terminal
     {
         get { return _terminal; }
-        set { _terminal = string.Format("{0}, \n{1}", value, Terminal); }
+        set { _terminal = string.Format("{0}\n{1}", value, Terminal); }
     }
 
     #endregion

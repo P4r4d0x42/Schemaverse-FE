@@ -80,7 +80,7 @@ public class BasicCommands : GUIDraggableObject
         //GUI.Button(new Rect(10, 10, 128, 10), "Stats"); // This works with in the area but you got to line stuff up
         if (GUILayout.Button("Stats"))
         {
-            if (_connectToDb != null) _connectToDb.GetSelectData();
+            if (_connectToDb != null) _connectToDb.GetSelectData(new[] {"username", "balance", "fuel_reserve"},"my_player");
         }
 
         GUILayout.EndArea();

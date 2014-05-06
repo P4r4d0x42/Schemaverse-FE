@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Assets.Scripts
 {
@@ -25,7 +26,10 @@ namespace Assets.Scripts
 
         #region Fields
 
-        static private Random _random;
+        private static  Random _random;
+
+        // For use with TileCase()
+        private static TextInfo TextInfo = new CultureInfo("en-US", false).TextInfo;
 
         #endregion
 
@@ -68,5 +72,17 @@ namespace Assets.Scripts
         }
         #endregion
 
+         /// <summary>
+         /// Will output: string is string to titlecase: String Is String
+         /// </summary>
+        /// <param name="_string"></param>
+         /// <returns></returns>
+        public static string TitleCase(string _string)
+        {
+
+            // Changes a string to titlecase.
+            return (TextInfo.ToTitleCase(_string));
+
+        }
     }
 }

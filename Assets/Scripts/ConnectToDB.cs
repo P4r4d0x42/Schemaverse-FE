@@ -80,23 +80,43 @@ namespace Assets.Scripts
         }
 
 
-        public  void GetSelectData()
+        public  void GetSelectData(string [] fields, string table)
         {
-            // This should be a Select Statment method
-            dbcmd.CommandText = "SELECT username, balance, fuel_reserve FROM my_player";
-            // Test connection by running this query
+
+            #region Create Select String from params
+            // Grab paramiters and create a SELECT statement to 
+            string cmdText = "SELECT";
+            
+            int arryLen = fields.Length;// caching the array length for optimization
+            for (int i = 0; i < arryLen-1; i++)
+            {
+                cmdText += " " + fields[i] + ",";
+            }
+            // Grabs the last item in the array and then specify table to pull data FROM
+            cmdText += fields[arryLen-1] + " " + "FROM" + " "  + table;
+            
+            Terminal = cmdText; // Output what we have so there is feed back from the button
+            #endregion
+
+            dbcmd.CommandText = cmdText;//"SELECT username, balance, fuel_reserve FROM my_player";
+
+
+
+
 
             var reader = dbcmd.ExecuteReader();
-
+            string outputTest = "|  ";
+            
             while (reader.Read())
             {
-                string username = reader["username"].ToString();
+                //Terminal = string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}", reader["username"], reader["balance"], reader["fuel_reserve"]);
 
-                string balance = reader["balance"].ToString();
-
-                string fuel_reserve = reader["fuel_reserve"].ToString();
-
-                Terminal = string.Format("Username: {0}, Balance: {1}, Fuel Reserve: {2}", username, balance, fuel_reserve);
+                for (int i = 0; i < arryLen; i++)
+                {
+                    string temp = fields[i];
+                    outputTest +=   Utilities.TitleCase(temp) + " : " + reader[fields[i]] + "  |  ";
+                }
+                Terminal = outputTest;
             }
 
             // clean up
@@ -106,7 +126,7 @@ namespace Assets.Scripts
         }
 
 
-        public  void ConnectionToDb()
+        public void ConnectionToDb()
         {
             // Using try to wrap the db connection open and close process.
             try
@@ -137,6 +157,7 @@ namespace Assets.Scripts
             {
                 // something went wrong, and you wanna know why
                 Debug.LogError(msg.ToString());
+                Terminal = msg.ToString();
                 throw;
             }
         }
