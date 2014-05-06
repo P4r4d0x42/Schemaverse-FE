@@ -57,10 +57,7 @@ public class ConnectionSettings : GUIDraggableObject
     /// </summary>
     public void MenuElement()
     {
-
-         
-       
-
+        
         GUILayout.Label(string.Format("Server Address: {0}", _connectToDb.Host), GUI.skin.GetStyle("Box"),
                         GUILayout.ExpandWidth(true));
         GUILayout.Label(string.Format("Server Port: {0}", _connectToDb.Port), GUI.skin.GetStyle("Box"),

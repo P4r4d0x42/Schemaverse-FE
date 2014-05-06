@@ -28,11 +28,11 @@ public class BasicGUI : MonoBehaviour
 		int sh = Screen.height;
 
 
-		// Initialize all the menu objects
+		// Initialize all the menu objects TODO: These defaults should be loaded from a config file. Also, changes should be saved to same config.
 		m_Data.Add(new ConnectionSettings("Connection Settings", 1, _connectToDb, new Vector2(10f, 10f), new Vector2(256f, 166f)));
 		m_Data.Add(new BasicCommands("Basic Commands", 2, _connectToDb, new Vector2(sw - 266f, 10f), new Vector2(256f, 166f)));
-		m_Data.Add(new TerminalOutput("Terminal Output", 3, _connectToDb, new Vector2(sw /2 - 256, sh - 206f), new Vector2(512f, 166f)));
-		m_Data.Add(new TerminalOutput("Terminal Input", 4, _connectToDb, new Vector2(sw / 2 - 256, sh - 42f), new Vector2(512f, 32f)));
+		m_Data.Add(new TerminalWindow("Terminal Window", 3, _connectToDb, new Vector2(sw /2 - 256, sh - 206f), new Vector2(512f, 196f)));
+		
 	}
 
 	public void OnGUI ()
@@ -70,9 +70,8 @@ public class BasicGUI : MonoBehaviour
 			}
 		}
 
-		// Move items to front when title clicked???
-		if (toFront != null)
-		// Move an object to front if needed
+
+		if (toFront != null) // Move an object to front if needed		
 		{
 			m_Data.Remove(toFront);
 			m_Data.Add(toFront);

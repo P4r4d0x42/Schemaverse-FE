@@ -50,17 +50,17 @@ namespace Assets.Scripts
         public  int Port { get; private set; }
 
         /// <summary>
-        /// Create a link to the static property in TerminalOutput. This will sort of work like a terminal now.  
+        /// Create a link to the static property in Terminal Window for use in this class.
         /// </summary>
         internal string Terminal
         {
-            get { return TerminalOutput.Terminal; }
-            set { TerminalOutput.Terminal = string.Format("{0}, \n{1}", value, Terminal); } // The idea being _terminal = String.Format("Here is another line\n{0}", _terminal);
+            get { return TerminalWindow.Terminal; }
+            set { TerminalWindow.Terminal = value; } 
         }
 
         #endregion
 
-
+        // TODO: Put this shit in a config file
         public ConnectToDb()
         {
             Host = "db.schemaverse.com";

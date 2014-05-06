@@ -5,10 +5,10 @@ using UnityEngine;
 /// <summary>
 /// Dragable Menu
 /// </summary>
-public class TerminalOutput : GUIDraggableObject
+public class TerminalWindow : GUIDraggableObject
 {
     private Vector2 scrollPosition;
-    private static string _terminal = "Terminal Is Currently Read Only\n";
+    internal static string _terminal = "";
     
     private string m_Name;
     private int m_Value; // May have this for tracking menu numbers or some such
@@ -17,16 +17,24 @@ public class TerminalOutput : GUIDraggableObject
     // Holds reference to class
     private ConnectToDb _connectToDb;
 
+    public string stringToEdit = "Terminal Is Currently Read Only";
+
+    #region Properties
+
+    /// <summary>
+    /// Provides formatted access to the internal _terminal var
+    /// This will sort of work like a terminal now.
+    /// </summary>
     public static String Terminal
     {
         get { return _terminal; }
-        set { _terminal = value; }
+        set { _terminal = string.Format("{0}, \n{1}", value, Terminal); }
     }
 
-
+    #endregion
 
     // Override constructor for use with the correct class
-    public TerminalOutput(string name, int value, ConnectToDb connectToDb, Vector2 position, Vector2 size)
+    public TerminalWindow(string name, int value, ConnectToDb connectToDb, Vector2 position, Vector2 size)
         : base(position, size)
     {
         m_Name = name;
@@ -76,12 +84,14 @@ public class TerminalOutput : GUIDraggableObject
     public void MenuElement()
     {
         // This is for scrolling
-        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(Size.x-10), GUILayout.Height(105));
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(Size.x-10), GUILayout.Height(110));
         GUILayout.Label(_terminal);
         GUILayout.EndScrollView();
         
         if (GUILayout.Button("Clear"))
             _terminal = "";
+
+        stringToEdit = GUILayout.TextField(stringToEdit, (int)Size.x);
 
     }
 }
