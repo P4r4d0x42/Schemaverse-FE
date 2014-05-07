@@ -105,6 +105,8 @@ namespace Assets.Scripts
 
 
             var reader = dbcmd.ExecuteReader();
+            
+            
             string outputTest = "|  ";
             
             while (reader.Read())
@@ -124,6 +126,9 @@ namespace Assets.Scripts
             reader.Close();
             reader = null;
         }
+
+        // SELECT id, name, location, mine_limit, conqueror_id  FROM planets WHERE conqueror_id=GET_PLAYER_ID(SESSION_USER);
+
 
 
         public void ConnectionToDb()
