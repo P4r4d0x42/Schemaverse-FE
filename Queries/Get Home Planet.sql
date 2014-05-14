@@ -1,0 +1,1 @@
+﻿SELECT id, name, location, mine_limit, conqueror_id  FROM planets WHERE conqueror_id=GET_PLAYER_ID(SESSION_USER);
